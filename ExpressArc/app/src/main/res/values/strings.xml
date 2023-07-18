@@ -1,3 +1,7 @@
 <resources>
     <string name="app_name">ExpressArc</string>
+    <string name="txt_good_luck">Boa sorte!</string>
+    <string name="hint_edit_number">Digite um número entre 6 e 15</string>
+    <string name="txt_gerar_sorteio">Gerar sorteio</string>
+    <string name="txt_parabens">Parabéns</string>
 </resources>

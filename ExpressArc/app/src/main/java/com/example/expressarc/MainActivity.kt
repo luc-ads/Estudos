@@ -1,5 +1,7 @@
 package com.example.expressarc
 
+import android.content.Context
+import android.content.SharedPreferences
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.Toast
@@ -9,11 +11,19 @@ import java.util.Random
 class MainActivity : AppCompatActivity() {
 
     private lateinit var binding: ActivityMainBinding
+    private lateinit var prefs: SharedPreferences
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
+
+        prefs = getSharedPreferences("db", Context.MODE_PRIVATE)
+        val result = prefs.getString("numbers", null)
+
+        result.let {
+            binding.txtResult.text = "Última aposta feita: $it"
+        }
 
         binding.button.setOnClickListener {
             sorteio(binding.editNumber.text.toString())
@@ -44,6 +54,10 @@ class MainActivity : AppCompatActivity() {
         }
 
         binding.txtResult.text = numbers.joinToString(" - ")
+
+        val editor = prefs.edit()
+        editor.putString("numbers", binding.txtResult.text.toString())
+        editor.apply()
     }
 
     private fun toastAlert(alertMessage: String) {

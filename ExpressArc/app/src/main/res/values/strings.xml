@@ -1,3 +1,4 @@
 <resources>
     <string name="app_name">ExpressArc</string>
+    <string name="txt_imc">IMC</string>
 </resources>

@@ -1,5 +1,6 @@
 package com.example.expressarc
 
+import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import com.example.expressarc.databinding.ActivityMainBinding
@@ -12,5 +13,9 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
+
+        binding.linearImc.setOnClickListener {
+            startActivity(Intent(this, IMCActivity::class.java))
+        }
     }
 }

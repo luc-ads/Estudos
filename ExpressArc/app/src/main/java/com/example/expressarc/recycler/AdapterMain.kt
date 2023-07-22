@@ -1,7 +1,9 @@
 package com.example.expressarc.recycler
 
 import android.content.Context
+import android.service.autofill.OnClickAction
 import android.view.LayoutInflater
+import android.view.View.OnClickListener
 import android.view.ViewGroup
 import android.widget.Button
 import android.widget.TextView
@@ -9,9 +11,13 @@ import android.widget.Toast
 import androidx.recyclerview.widget.RecyclerView
 import androidx.recyclerview.widget.RecyclerView.ViewHolder
 import com.example.expressarc.databinding.ItemRecyclerBinding
+import com.example.expressarc.interfaceMain.OnClickForAdapter
 import com.example.expressarc.model.MainItem
 
-class AdapterMain(private val context: Context, private val list: List<MainItem>
+class AdapterMain(
+    private val context: Context,
+    private val list: List<MainItem>,
+    private val onClickListener: OnClickForAdapter
 ): RecyclerView.Adapter<AdapterMain.MainViewHolder>() {
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): MainViewHolder {
         val binding = ItemRecyclerBinding.inflate(LayoutInflater.from(parent.context),parent, false)
@@ -20,7 +26,7 @@ class AdapterMain(private val context: Context, private val list: List<MainItem>
 
     override fun onBindViewHolder(holder: MainViewHolder, position: Int) {
         val item = list[position]
-        holder.bind(item)
+        holder.bind(item, position)
     }
 
     override fun getItemCount(): Int {
@@ -36,10 +42,10 @@ class AdapterMain(private val context: Context, private val list: List<MainItem>
             txtNameButton = itemRecycler.txtNameButton
         }
 
-        fun bind(mainItem: MainItem) {
+        fun bind(mainItem: MainItem, itemPosition: Int) {
             txtNameButton.setText(mainItem.textStringId)
             button.setOnClickListener {
-                Toast.makeText(context, "Clicou no button", Toast.LENGTH_SHORT).show()
+                onClickListener.onClick(itemPosition)
             }
             button.setImageResource(mainItem.drawableId)
         }

@@ -6,9 +6,8 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.Toast
 import androidx.recyclerview.widget.GridLayoutManager
-import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.expressarc.databinding.ActivityMainBinding
-import com.example.expressarc.interfaceMain.OnClickForAdapter
+import com.example.expressarc.`interface`.OnClickForAdapter
 import com.example.expressarc.model.MainItem
 import com.example.expressarc.recycler.AdapterMain
 

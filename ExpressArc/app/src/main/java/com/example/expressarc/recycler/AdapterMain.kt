@@ -1,17 +1,13 @@
 package com.example.expressarc.recycler
 
 import android.content.Context
-import android.service.autofill.OnClickAction
 import android.view.LayoutInflater
-import android.view.View.OnClickListener
 import android.view.ViewGroup
-import android.widget.Button
 import android.widget.TextView
-import android.widget.Toast
 import androidx.recyclerview.widget.RecyclerView
 import androidx.recyclerview.widget.RecyclerView.ViewHolder
 import com.example.expressarc.databinding.ItemRecyclerBinding
-import com.example.expressarc.interfaceMain.OnClickForAdapter
+import com.example.expressarc.`interface`.OnClickForAdapter
 import com.example.expressarc.model.MainItem
 
 class AdapterMain(

@@ -7,8 +7,8 @@ import android.view.inputmethod.InputMethodManager
 import android.widget.Toast
 import androidx.annotation.StringRes
 import androidx.appcompat.app.AlertDialog
-import androidx.core.content.ContextCompat
 import com.example.expressarc.databinding.ActivityImcBinding
+import com.example.expressarc.roomModel.Calc
 
 class IMCActivity : AppCompatActivity() {
 
@@ -40,6 +40,19 @@ class IMCActivity : AppCompatActivity() {
                     .setMessage(resultRangeImc)
                     .setPositiveButton(R.string.ok) { dialog, _ ->
                         dialog.dismiss()
+                    }
+                    .setNegativeButton(R.string.save) { dialog, _  ->
+                        val app = (application as App)
+                        val dao = app.db.calcDao()
+                        Thread {
+                            dao.insert(
+                                Calc(
+                                    type = "imc",
+                                    res = resultCalcImc
+                                )
+                            )
+                        }.start()
+
                     }
                     .create()
                     .show()

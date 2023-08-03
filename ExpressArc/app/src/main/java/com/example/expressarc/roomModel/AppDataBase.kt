@@ -21,12 +21,11 @@ abstract class AppDataBase: RoomDatabase() {
         fun getDataBase(context: Context): AppDataBase {
             return if (INSTANCE == null) {
                 synchronized(this) {
-                    Room.databaseBuilder(
-                        context,
+                    INSTANCE = Room.databaseBuilder(
+                        context.applicationContext,
                         AppDataBase::class.java,
                         "fitness_tracker"
-                    )
-                    .build()
+                    ).build()
                 }
                 INSTANCE as AppDataBase
             } else {

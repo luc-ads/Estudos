@@ -7,7 +7,7 @@ import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import androidx.recyclerview.widget.RecyclerView.ViewHolder
 import com.example.expressarc.databinding.ItemRecyclerBinding
-import com.example.expressarc.`interface`.OnClickForAdapter
+import com.example.expressarc.model.OnClickForAdapter
 import com.example.expressarc.model.MainItem
 
 class AdapterMain(

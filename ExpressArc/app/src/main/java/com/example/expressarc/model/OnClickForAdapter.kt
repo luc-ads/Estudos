@@ -1,4 +1,4 @@
-package com.example.expressarc.`interface`
+package com.example.expressarc.model
 
 interface OnClickForAdapter {
 

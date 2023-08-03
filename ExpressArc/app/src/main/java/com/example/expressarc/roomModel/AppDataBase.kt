@@ -4,30 +4,33 @@ import android.content.Context
 import androidx.room.Database
 import androidx.room.Room
 import androidx.room.RoomDatabase
-import com.example.expressarc.`interface`.InterfaceCalcDao
+import androidx.room.TypeConverters
+import com.example.expressarc.model.CalcDao
+import com.example.expressarc.model.DateConverter
 
 @Database(entities = [Calc::class], version = 1)
-abstract class DataBase: RoomDatabase() {
+@TypeConverters(DateConverter::class)
+abstract class AppDataBase: RoomDatabase() {
 
-    abstract fun calcDao(): InterfaceCalcDao
+    abstract fun calcDao(): CalcDao
 
     companion object {
 
-        private var INSTANCE: DataBase? = null
+        private var INSTANCE: AppDataBase? = null
 
-        fun getDataBase(context: Context): DataBase {
+        fun getDataBase(context: Context): AppDataBase {
             return if (INSTANCE == null) {
                 synchronized(this) {
                     Room.databaseBuilder(
                         context,
-                        DataBase::class.java,
+                        AppDataBase::class.java,
                         "fitness_tracker"
                     )
                     .build()
                 }
-                INSTANCE as DataBase
+                INSTANCE as AppDataBase
             } else {
-                INSTANCE as DataBase
+                INSTANCE as AppDataBase
             }
         }
     }

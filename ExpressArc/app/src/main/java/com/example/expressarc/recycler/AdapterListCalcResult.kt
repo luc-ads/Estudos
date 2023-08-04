@@ -7,6 +7,8 @@ import androidx.recyclerview.widget.RecyclerView
 import androidx.recyclerview.widget.RecyclerView.ViewHolder
 import com.example.expressarc.databinding.ItemListCalcResultBinding
 import com.example.expressarc.roomModel.Calc
+import java.text.SimpleDateFormat
+import java.util.Locale
 
 class AdapterListCalcResult(
     private val list: List<Calc>
@@ -41,9 +43,13 @@ class AdapterListCalcResult(
         }
 
         fun bind(itemCalc: Calc) {
+
+            val sdf = SimpleDateFormat("dd/MM/yyyy HH:mm", Locale("pt", "BR"))
+            val data = sdf.format(itemCalc.createdDate)
+
             txtID.text = itemCalc.id.toString()
             txtRes.text = itemCalc.res.toString()
-            txtDate.text = itemCalc.createdDate.toString()
+            txtDate.text = data
             txtType.text = itemCalc.type
         }
     }

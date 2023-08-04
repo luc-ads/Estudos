@@ -4,18 +4,27 @@ import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
+import com.example.expressarc.databinding.ActivityListCalcBinding
+import com.example.expressarc.recycler.AdapterListCalcResult
 import com.example.expressarc.roomModel.Calc
 import java.lang.IllegalStateException
 
 class ListCalcActivity : AppCompatActivity() {
+
+    private lateinit var binding: ActivityListCalcBinding
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_list_calc)
+        binding = ActivityListCalcBinding.inflate(layoutInflater)
+        setContentView(binding.root)
+
+        initValues()
+    }
+
+    private fun initValues() {
 
         val type = intent?.extras?.getString("type") ?: throw IllegalStateException("parameter imc from intent not found")
 
         Thread {
-
             val app = application as App
             val dao = app.db.calcDao()
             val result = dao.getRegisterByType(type)
@@ -24,9 +33,11 @@ class ListCalcActivity : AppCompatActivity() {
                 result.forEach {
                     Log.i("resultCalcList", it.toString())
                 }
+                binding.rvListCalc.adapter = AdapterListCalcResult(result)
             }
 
         }.start()
+
 
     }
 }

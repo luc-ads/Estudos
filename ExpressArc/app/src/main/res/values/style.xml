@@ -18,4 +18,8 @@
         <item name="android:textSize">20sp</item>
     </style>
 
+    <style name="AutoTextViewForm" parent="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.Dense.ExposedDropdownMenu">
+        <item name="android:layout_marginTop">20dp</item>
+    </style>
+
 </resources>

@@ -5,6 +5,7 @@
     <string name="weight">peso (kg)</string>
     <string name="height">altura (cm)</string>
     <string name="imc_title">Calcule o seu IMC gratuitamente</string>
+    <string name="tmb_title">Calcule o seu TMB gratuitamente</string>
     <string name="imc_desc">IMC é a sigla para Índice de Massa Corporal que serve para avaliar o peso do indivíduo em relação à sua altura e assim indicar se está dentro do peso ideal, acima ou abaixo do peso desejado.\n\nPreencha os campos de peso e altura para descobrir o seu IMC</string>
     <string name="calc">Calcular</string>
     <string name="fields_message">Os campos devem ser preenchidos e diferente de zero</string>

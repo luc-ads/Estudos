@@ -45,7 +45,7 @@ class MainActivity : AppCompatActivity()
                 if (itemPosition % 2 == 0) {
                 startActivity(Intent(this@MainActivity, IMCActivity::class.java))
             } else {
-                Toast.makeText(this@MainActivity, "Não foi possível mudar a activity", Toast.LENGTH_SHORT).show()
+                    startActivity(Intent(this@MainActivity, TmbActivity::class.java))
             }
             }
         })

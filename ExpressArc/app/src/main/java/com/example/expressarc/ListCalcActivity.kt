@@ -1,12 +1,10 @@
 package com.example.expressarc
 
-import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
 import com.example.expressarc.databinding.ActivityListCalcBinding
 import com.example.expressarc.recycler.AdapterListCalcResult
-import com.example.expressarc.roomModel.Calc
 import java.lang.IllegalStateException
 
 class ListCalcActivity : AppCompatActivity() {

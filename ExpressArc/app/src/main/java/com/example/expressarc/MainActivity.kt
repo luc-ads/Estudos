@@ -17,7 +17,7 @@ class MainActivity : AppCompatActivity()
 {
 
     private lateinit var binding: ActivityMainBinding
-    val listName = mutableListOf<MainItem>()
+    private val listName = mutableListOf<MainItem>()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)

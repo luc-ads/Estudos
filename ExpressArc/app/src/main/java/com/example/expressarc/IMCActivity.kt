@@ -4,6 +4,8 @@ import android.content.Context
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.view.Menu
+import android.view.MenuItem
 import android.view.inputmethod.InputMethodManager
 import android.widget.Toast
 import androidx.annotation.StringRes
@@ -23,6 +25,18 @@ class IMCActivity : AppCompatActivity() {
         setContentView(binding.root)
 
         initValues()
+    }
+
+    override fun onCreateOptionsMenu(menu: Menu?): Boolean {
+        menuInflater.inflate(R.menu.main_menu, menu)
+        return true
+    }
+
+    override fun onOptionsItemSelected(item: MenuItem): Boolean {
+        if (item.itemId == R.id.menu_search) {
+            intentToListActivity()
+        }
+        return super.onOptionsItemSelected(item)
     }
 
     private fun initValues() {
@@ -54,9 +68,7 @@ class IMCActivity : AppCompatActivity() {
                             )
 
                             runOnUiThread {
-                                val intent = Intent(this@IMCActivity, ListCalcActivity::class.java)
-                                intent.putExtra("type", "imc")
-                                startActivity(intent)
+                                intentToListActivity()
                             }
 
                         }.start()
@@ -69,6 +81,13 @@ class IMCActivity : AppCompatActivity() {
                 service.hideSoftInputFromWindow(currentFocus?.windowToken, 0)
             }
         }
+    }
+
+    private fun intentToListActivity() {
+        val intent = Intent(this@IMCActivity, ListCalcActivity::class.java)
+        intent.putExtra("type", "imc")
+        startActivity(intent)
+        finish()
     }
 
     @StringRes

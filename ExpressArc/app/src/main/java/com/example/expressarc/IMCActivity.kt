@@ -17,7 +17,7 @@ class IMCActivity : AppCompatActivity() {
 
     private lateinit var binding: ActivityImcBinding
     private var resultCalcImc = 0.0
-    private var resultRangeImc: Int = 0
+    private var resultRangeImc: Int = 1
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
